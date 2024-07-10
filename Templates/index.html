@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     </head>
-    <body>
+    <body >
         <div class="container mt-5">
             <h1 class="mb-4 text-center">Lista de Personas</h1>
             <a href="{{ url_for('crear') }}" class="btn btn-primary mb-3">Crear Nueva Persona</a>
@@ -15,7 +15,7 @@
             <!-- Mostrar mensajes flash -->
             {% with messages = get_flashed_messages(with_categories=True) %}
                 {% if messages %}
-                    <div class="alert alert-danger">
+                    <div class="alert alert-danger"> 
                         {% for category, message in messages %}
                             <p>{{ message }}</p>
                         {% endfor %}
@@ -47,7 +47,7 @@
                             <td>
                                 <a href="{{ url_for('leer', id=persona.id) }}" class="btn btn-info btn-sm">Ver</a>
                                 <a href="{{ url_for('actualizar', id=persona.id) }}" class="btn btn-warning btn-sm">Editar</a>
-                                <form action="{{ url_for('eliminar', id=persona.id) }}" method="post" style="display:inline;">
+                                <form action="{{ url_for('eliminar', id=persona.id) }}" method="post" style="display:inline;"></form>
                                     <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                 </form>
                             </td>

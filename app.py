@@ -17,13 +17,24 @@ def is_valid_email(email):
 
 @app.route('/')
 def LandingPage():
+    if request.method == 'POST':
+        return redirect(url_for('index'))
     return render_template('LandingPage.html')
+
 
 @app.route('/people')
 def index():
     cursor.execute("SELECT * FROM Personas")
     personas = cursor.fetchall()
     return render_template('index.html', personas=personas)
+
+@app.route('/consejos')
+def consejos():
+    return render_template('consejos.html')
+
+@app.route('/recursos')
+def recursos():
+    return render_template('recursos.html')
 
 @app.route('/crear', methods=['GET', 'POST'])
 def crear():
