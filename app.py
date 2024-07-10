@@ -6,7 +6,7 @@ app = Flask(__name__)
 app.secret_key = 'mi_secreto'
 
 # Configuración de la conexión a la base de datos
-conn_str = 'DRIVER={ODBC Driver 17 for SQL Server};SERVER=DESKTOP-MOIKTKR\MSSQLSERVER01;DATABASE=PREGNANCY2;Trusted_Connection=yes;'
+conn_str = r'DRIVER={ODBC Driver 17 for SQL Server};SERVER=ALFREDO-DANEL-R;DATABASE=PREGNANCY2;Trusted_Connection=yes;'
 conn = pyodbc.connect(conn_str)
 cursor = conn.cursor()
 
@@ -16,6 +16,10 @@ def is_valid_email(email):
     return re.match(pattern, email) is not None
 
 @app.route('/')
+def LandingPage():
+    return render_template('LandingPage.html')
+
+@app.route('/people')
 def index():
     cursor.execute("SELECT * FROM Personas")
     personas = cursor.fetchall()
@@ -150,4 +154,4 @@ def leer(id):
     return render_template('leer.html', persona=persona)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=8000)
